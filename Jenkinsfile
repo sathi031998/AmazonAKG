@@ -11,7 +11,7 @@ pipeline {
                 sh 'mvn compile'
             }
         }
-        stage('Build') 
+        stage('Build') {
             steps {
                 sh 'mvn clean install'
             }
@@ -19,17 +19,17 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    def tomcatURL = 'http://your-tomcat-server:8080/manager/text'
+                    def tomcatURL = 'http://localhost:8087/manager/text'
                     def warFile = 'target/Amazon.war'
                     def contextPath = 'Amazon'
-                    def tomcatUser = 'your-tomcat-Sathi'
-                    def tomcatPassword = 'your-tomcat-sathi123'
+                    def tomcatUser = 'your-tomcat-username'
+                    def tomcatPassword = 'your-tomcat-password'
                     
                     sh """
-                        curl --upload-file ${Amazon.war} \
-                            --user ${Sathi}:${sathi123} \
-                            ${localhost:8087}/deploy?path=/${Amazon.war}&update=true
-                      """
+                        curl --upload-file ${warFile} \
+                            --user ${tomcatUser}:${tomcatPassword} \
+                            ${tomcatURL}/deploy?path=/${contextPath}&update=true
+                    """
                 }
             }
         }
@@ -44,4 +44,4 @@ pipeline {
     }
 }
 
-
+       
