@@ -6,14 +6,7 @@ stage('pull') {
                 git url: 'https://github.com/sathi031998/AmazonAKG.git'
             }
         }
-
-
-        stage('compile') {
-            steps {
-                sh ‘mvn compile'
-            }
-        }
-
+        
         stage('build') {
             steps {
                  sh 'mvn clean install'
