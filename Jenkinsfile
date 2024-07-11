@@ -6,17 +6,12 @@ pipeline {
                 git url: 'https://github.com/sathi031998/AmazonAKG.git'
             }
         }
-<<<<<<< HEAD
         stage('Compile') {
             steps {
                 sh 'mvn compile'
             }
         }
-        stage('Build') {
-=======
-        
-        stage('build') {
->>>>>>> 5fb3d4a07fba6d3dcaeca947c37fea8fe60a978f
+        stage('Build') 
             steps {
                 sh 'mvn clean install'
             }
