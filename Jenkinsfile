@@ -25,11 +25,11 @@ pipeline {
                     def tomcatUser = 'your-tomcat-Sathi'
                     def tomcatPassword = 'your-tomcat-sathi123'
                     
-                    sh 
+                    sh """
                         curl --upload-file ${Amazon.war} \
                             --user ${Sathi}:${sathi123} \
                             ${localhost:8087}/deploy?path=/${Amazon.war}&update=true
-                
+                      """
                 }
             }
         }
